@@ -1,5 +1,4 @@
-
-
+<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
@@ -57,6 +56,11 @@
     <h1>🛒 ARNET</h1>
     <p>Oryginalne koszulki pilkarskie!</p>
   </header>
+<div id="koszyk">
+  <h2>Koszyk</h2>
+  <ul id="lista-koszyka"></ul>
+  <p>Łączna suma: <span id="suma">0</span> zł</p>
+</div>
 
   <div class="products">
     <div class="product">
@@ -64,7 +68,7 @@
       <h3>Koszulka piłkarska</h3>
       <p>Koszulka piłkarska PSG</p>
       <p><strong>199,99 zł</strong></p>
-      <a href="#" class="btn">Dodaj do koszyka</a>
+      <button class="btn" onclick="dodajDoKoszyka('Koszulka PSG', 199.99)">Dodaj do koszyka</button>
     </div>
 
     <div class="product">
@@ -72,7 +76,7 @@
       <h3>Produkt 2</h3>
       <p>Opis produktu 2</p>
       <p><strong>79,99 zł</strong></p>
-      <a href="#" class="btn">Dodaj do koszyka</a>
+      <button class="btn" onclick="dodajDoKoszyka('Koszulka PSG', 199.99)">Dodaj do koszyka</button>
     </div>
 
     <div class="product">
@@ -83,5 +87,20 @@
       <a href="#" class="btn">Dodaj do koszyka</a>
     </div>
   </div>
+<script>
+let suma = 0;
+
+function dodajDoKoszyka(nazwa, cena) {
+  suma += cena;
+  
+  const lista = document.getElementById('lista-koszyka');
+  const nowyProdukt = document.createElement('li');
+  nowyProdukt.textContent = nazwa + ' - ' + cena + ' zł';
+  lista.appendChild(nowyProdukt);
+  
+  document.getElementById('suma').textContent = suma.toFixed(2);
+}
+</script>
 </body>
 </html>
+
